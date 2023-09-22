@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+<div id="d1" style="width: 100px;margin: 1px;">&nbsp;</div>
+<div id="d2" style="width: 100px;margin: 1px;">&nbsp;</div>
+<div id="d3" style="width: 100px;margin: 1px;">&nbsp;</div>
+<div id="d4" style="width: 100px;margin: 1px;">&nbsp;</div>
+<div id="d5" style="width: 100px;margin: 1px;">&nbsp;</div>
+<div id="d6" style="width: 100px;margin: 1px;">&nbsp;</div>
+<div id="d6" style="width: 100px;margin: 1px;">&nbsp;</div>
+<div id="d6" style="width: 100px;margin: 1px;">&nbsp;</div>
+<div id="d6" style="width: 100px;margin: 1px;">&nbsp;</div>
+<div id="d6" style="width: 100px;margin: 1px;">&nbsp;</div>
+<div id="d6" style="width: 100px;margin: 1px;">&nbsp;</div>
+<div id="d6" style="width: 100px;margin: 1px;">&nbsp;</div>
+<div id="d6" style="width: 100px;margin: 1px;">&nbsp;</div>
+<div id="d6" style="width: 100px;margin: 1px;">&nbsp;</div>
+<div id="d6" style="width: 100px;margin: 1px;">&nbsp;</div>
+<div id="d6" style="width: 100px;margin: 1px;">&nbsp;</div>
+<div id="d6" style="width: 100px;margin: 1px;">&nbsp;</div>
+<div id="d6" style="width: 100px;margin: 1px;">&nbsp;</div>
+<div id="d6" style="width: 100px;margin: 1px;">&nbsp;</div>
+<div id="d6" style="width: 100px;margin: 1px;">&nbsp;</div>
+<div id="d6" style="width: 100px;margin: 1px;">&nbsp;</div>
+<div id="d6" style="width: 100px;margin: 1px;">&nbsp;</div>
+<div id="d6" style="width: 100px;margin: 1px;">&nbsp;</div>
+<div id="d6" style="width: 100px;margin: 1px;">&nbsp;</div>
+<div id="d6" style="width: 100px;margin: 1px;">&nbsp;</div>
+<div id="d6" style="width: 100px;margin: 1px;">&nbsp;</div>
+
+<button id="changeColorButton">Change Colors</button>
+
+<script>
+    // Function to generate a random color in hex format
+    function getRandomColor() {
+      const letters = '0123456789ABCDEF';
+      let color = '#';
+      for (let i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+      }
+      return color;
+    }
+
+    // Initial color assignment
+    const divs = document.querySelectorAll("div");
+    for (let i = 0; i < divs.length; i++) {
+      divs[i].style.backgroundColor = getRandomColor();
+    }
+
+    // Click event handler for the button
+    const button = document.getElementById("changeColorButton");
+    button.addEventListener("click", function () {
+      const divColors = {}; // To store unique colors for each div
+      for (let i = 0; i < divs.length; i++) {
+        let color;
+        do {
+          color = getRandomColor();
+        } while (divColors[color]); // Ensure unique colors
+        divs[i].style.backgroundColor = color;
+        divColors[color] = true;
+      }
+    });
+  </script>
+</body>
+</html>

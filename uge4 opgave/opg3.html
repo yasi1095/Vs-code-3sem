@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Names List</title>
+</head>
+<body>
+  <h2>Names List</h2>
+  <ul id="namesList">
+    <!-- Names will be added here dynamically -->
+  </ul>
+
+  <form id="nameForm">
+    <input type="text" id="nameInput" placeholder="Enter a name" required>
+    <button type="submit">Add Name</button>
+    <button type="button" id="removeFirst">Remove First</button>
+    <button type="button" id="removeLast">Remove Last</button>
+  </form>
+
+  <script>
+    // Initial array of names
+    const names = [];
+
+    // Function to update the UL with the names
+    function updateNamesList() {
+      const namesList = document.getElementById("namesList");
+      namesList.innerHTML = names.map(name => `<li>${name}</li>`).join("");
+    }
+
+    // Function to add a new name
+    function addName(event) {
+      event.preventDefault(); // Prevent form submission
+      const nameInput = document.getElementById("nameInput");
+      const newName = nameInput.value.trim();
+
+      if (newName) {
+        names.push(newName);
+        nameInput.value = ""; // Clear the input field
+        updateNamesList(); // Update the list
+      }
+    }
+
+    // Function to remove the first name
+    function removeFirst() {
+      if (names.length > 0) {
+        names.shift();
+        updateNamesList();
+      }
+    }
+
+    // Function to remove the last name
+    function removeLast() {
+      if (names.length > 0) {
+        names.pop();
+        updateNamesList();
+      }
+    }
+
+    // Event listeners
+    const nameForm = document.getElementById("nameForm");
+    nameForm.addEventListener("submit", addName);
+
+    const removeFirstButton = document.getElementById("removeFirst");
+    removeFirstButton.addEventListener("click", removeFirst);
+
+    const removeLastButton = document.getElementById("removeLast");
+    removeLastButton.addEventListener("click", removeLast);
+
+    // Initial rendering of the names list
+    updateNamesList();
+  </script>
+</body>
+</html>

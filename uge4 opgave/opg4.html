@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Car Selector</title>
+</head>
+<body>
+  <select id="car-selector">
+    <!-- Options will be populated by JavaScript -->
+  </select>
+  <h2>Selected Brand</h2>
+  <h4 id="car-make"></h4>
+
+  <script>
+    const cars = ["Ford", "WW", "Toyota", "Volvo"]; // Assume this was fetched from the backend
+    const carSelector = document.getElementById("car-selector");
+    const carMake = document.getElementById("car-make");
+
+    // Function to populate the select element with car makes
+    function populateCarSelector() {
+      cars.forEach(make => {
+        const option = document.createElement("option");
+        option.value = make;
+        option.textContent = make;
+        carSelector.appendChild(option);
+      });
+    }
+
+    // Event listener for when a car make is selected
+    carSelector.addEventListener("change", function () {
+      const selectedCarMake = carSelector.value;
+      carMake.textContent = `Selected Car Make: ${selectedCarMake}`;
+    });
+
+    // Populate the select element with car makes on page load
+    populateCarSelector();
+  </script>
+</body>
+</html>

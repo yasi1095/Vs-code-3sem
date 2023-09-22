@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Div Event Handling</title>
+  <style>
+    .my-div {
+      width: 25px;
+      height: 25px;
+      background-color: rgb(77, 39, 39);
+      margin: 1px;
+    }
+  </style>
+</head>
+<body>
+  <div id="outer" onclick="handleClick(event)">
+    <div id="div1" class="my-div"></div>
+    <div id="div2" class="my-div"></div>
+    <div id="div3" class="my-div"></div>
+    <div id="div4" class="my-div"></div>
+    <div id="div5" class="my-div"></div>
+    <div id="div6" class="my-div"></div>
+    <!-- Add 10 more divs (unique ids) with the class "my-div" here if needed -->
+  </div>
+
+  <p id="output"></p>
+
+  <script>
+    // Function to handle the click event
+    function handleClick(event) {
+      const target = event.target; // Get the clicked element
+      if (target.classList.contains("my-div")) {
+        const divId = target.id;
+        const outputElement = document.getElementById("output");
+        outputElement.innerText = `Hej fra ${divId} din adam`;
+      }
+    }
+  </script>
+</body>
+</html>
